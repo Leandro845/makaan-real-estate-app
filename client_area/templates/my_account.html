@@ -1,0 +1,138 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block page %}
+My Account
+{% endblock %}
+
+{% block title_page %}
+My Account
+{% endblock %}
+
+{% block css %}
+<link href="{% static 'css/my_account.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+
+<div class="container mt-5">
+    <h1 class="text-center mb-4">My Account</h1>
+    {% include 'parciais/_message.html' %}
+    <!-- Including messages to display success or error messages -->
+
+    <div class="row">
+        <div class="col-md-12">
+            <form id="profile-form" method="POST" action="{% url 'my_account' request.user.id %}" enctype="multipart/form-data">
+                {% csrf_token %}
+                <!-- CSRF token for security -->
+                <div class="card shadow-sm rounded">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="text-center mb-4">
+                                    <div class="profile-image position-relative">
+                                        <img src="{{ client.user_image.url }}" alt="Profile Picture" class="rounded-circle img-fluid" style="width: 150px; height: 150px;">
+                                        <!-- Displaying current user image -->
+                                        <button class="btn btn-sm btn-primary position-absolute" style="bottom: 10px; right: 10px;" id="update-image-button">
+                                            <i class="fas fa-camera"></i>
+                                        </button>
+                                        <input type="file" id="profile-image-upload" name="user_image" accept="image/*" style="display: none;">
+                                        <!-- File input for uploading a new profile picture -->
+                                    </div>
+                                    <h5 class="card-title font-weight-bold mt-3">{{ client.name }} {{ client.surname }}</h5>
+                                    <!-- Displaying user's name -->
+                                    <p class="card-text text-muted">{{ client.email }}</p>
+                                    <!-- Displaying user's email -->
+                                    <a href="{% url 'my_properties_details' client.id %}" class="btn btn-primary btn-block rounded-pill shadow-sm">My Projects</a>
+                                    <!-- Link to user's projects -->
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <h5 class="card-title font-weight-bold mb-3">Edit Profile</h5>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="email">Email:</label>
+                                        <input type="email" class="form-control" id="email" name="email_update" value="{{ client.email }}">
+                                        <!-- Input field for updating email -->
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="password">Password:</label>
+                                        <div class="input-group">
+                                            <input type="password" class="form-control" id="password" name="password_update" value="{{ client.password }}">
+                                            <!-- Input field for updating password -->
+                                            <div class="input-group-append">
+                                                <button class="btn btn-outline-secondary" type="button" id="togglePassword">
+                                                    <i class="fas fa-eye"></i>
+                                                    <!-- Button to toggle password visibility -->
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="address">Address:</label>
+                                        <input type="text" class="form-control" id="address" name="address_update" value="{{ client.address }}">
+                                        <!-- Input field for updating address -->
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="phone">Phone Number:</label>
+                                        <input type="tel" class="form-control" id="phone" name="phone_number_update" value="{{ client.phone_number }}">
+                                        <!-- Input field for updating phone number -->
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="country">Country:</label>
+                                        <input type="text" class="form-control" id="country" name="country_update" value="{{ client.country }}">
+                                        <!-- Input field for updating country -->
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="city">City:</label>
+                                        <input type="text" class="form-control" id="city" name="city_update" value="{{ client.city }}">
+                                        <!-- Input field for updating city -->
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-success" id="save-changes">Save Changes</button>
+                                <!-- Button to submit form for saving changes -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-md-12">
+            <form method="POST" action="{% url 'delete_account' client.id %}">
+                {% csrf_token %}
+                <!-- CSRF token for security -->
+                <button type="submit" class="btn btn-danger">Delete Account</button>
+                <!-- Button to submit form for deleting account -->
+            </form>
+        </div>
+        <div class="row mt-4">
+            <div class="col-md-12">
+                <form method="POST" action="{% url 'logout' %}">
+                    {% csrf_token %}
+                    <!-- CSRF token for security -->
+                    <button type="submit" class="btn btn-danger">Logout</button>
+                    <!-- Button to submit form for logging out -->
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+    
+{% block script %}
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="{% static 'js/my_account.js' %}"></script>
+<!-- Including jQuery, Popper.js, Bootstrap JS, and custom JS file -->
+
+{% endblock %}

@@ -1,0 +1,109 @@
+{% load static %}
+<div class="container-xxl py-5">
+    <div class="container">
+        <!-- Title and Description Section -->
+        <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+            <h1 class="mb-3">Property Types</h1>
+            <p>Eirmod sed ipsum dolor sit rebum labore magna erat. Tempor ut dolore lorem kasd vero ipsum sit eirmod sit. Ipsum diam justo sed rebum vero dolor duo.</p>
+        </div>
+        <!-- Property Type Cards Section -->
+        <div class="row g-4">
+            <!-- Apartment Card -->
+            <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
+                <a class="cat-item d-block bg-light text-center rounded p-3" href="{% url 'property_list_per_housing' 'Apartment' %}">
+                    <div class="rounded p-4">
+                        <div class="icon mb-3">
+                            <img class="img-fluid" src="{% static 'img/icon-apartment.png' %}" alt="Icon">
+                        </div>
+                        <h6>Apartment</h6>
+                        <span>{{ properties.0 }} Properties</span>
+                    </div>
+                </a>
+            </div>
+            <!-- Villa Card -->
+            <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
+                <a class="cat-item d-block bg-light text-center rounded p-3" href="{% url 'property_list_per_housing' 'Villa' %}">
+                    <div class="rounded p-4">
+                        <div class="icon mb-3">
+                            <img class="img-fluid" src="{% static 'img/icon-villa.png' %}" alt="Icon">
+                        </div>
+                        <h6>Villa</h6>
+                        <span>{{ properties.1 }} Properties</span>
+                    </div>
+                </a>
+            </div>
+            <!-- Home Card -->
+            <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
+                <a class="cat-item d-block bg-light text-center rounded p-3" href="{% url 'property_list_per_housing' 'Home' %}">
+                    <div class="rounded p-4">
+                        <div class="icon mb-3">
+                            <img class="img-fluid" src="{% static 'img/icon-house.png' %}" alt="Icon">
+                        </div>
+                        <h6>Home</h6>
+                        <span>{{ properties.2 }} Properties</span>
+                    </div>
+                </a>
+            </div>
+            <!-- Office Card -->
+            <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
+                <a class="cat-item d-block bg-light text-center rounded p-3" href="{% url 'property_list_per_housing' 'Office' %}">
+                    <div class="rounded p-4">
+                        <div class="icon mb-3">
+                            <img class="img-fluid" src="{% static 'img/icon-housing.png' %}" alt="Icon">
+                        </div>
+                        <h6>Office</h6>
+                        <span>{{ properties.3 }} Properties</span>
+                    </div>
+                </a>
+            </div>
+            <!-- Building Card -->
+            <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
+                <a class="cat-item d-block bg-light text-center rounded p-3" href="{% url 'property_list_per_housing' 'Building' %}">
+                    <div class="rounded p-4">
+                        <div class="icon mb-3">
+                            <img class="img-fluid" src="{% static 'img/icon-building.png' %}" alt="Icon">
+                        </div>
+                        <h6>Building</h6>
+                        <span>{{ properties.4 }} Properties</span>
+                    </div>
+                </a>
+            </div>
+            <!-- Townhouse Card -->
+            <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
+                <a class="cat-item d-block bg-light text-center rounded p-3" href="{% url 'property_list_per_housing' 'Townhouse' %}">
+                    <div class="rounded p-4">
+                        <div class="icon mb-3">
+                            <img class="img-fluid" src="{% static 'img/icon-neighborhood.png' %}" alt="Icon">
+                        </div>
+                        <h6>Townhouse</h6>
+                        <span>{{ properties.5 }} Properties</span>
+                    </div>
+                </a>
+            </div>
+            <!-- Shop Card -->
+            <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
+                <a class="cat-item d-block bg-light text-center rounded p-3" href="{% url 'property_list_per_housing' 'Shop' %}">
+                    <div class="rounded p-4">
+                        <div class="icon mb-3">
+                            <img class="img-fluid" src="{% static 'img/icon-condominium.png' %}" alt="Icon">
+                        </div>
+                        <h6>Shop</h6>
+                        <span>{{ properties.6 }} Properties</span>
+                    </div>
+                </a>
+            </div>
+            <!-- Garage Card -->
+            <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
+                <a class="cat-item d-block bg-light text-center rounded p-3" href="{% url 'property_list_per_housing' 'Garage' %}">
+                    <div class="rounded p-4">
+                        <div class="icon mb-3">
+                            <img class="img-fluid" src="{% static 'img/icon-luxury.png' %}" alt="Icon">
+                        </div>
+                        <h6>Garage</h6>
+                        <span>{{ properties.7 }} Properties</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

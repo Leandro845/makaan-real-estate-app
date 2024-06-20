@@ -1,0 +1,10 @@
+{% if messages %}
+    <!-- Check if there are messages to display -->
+    {% for message in messages %}
+        <!-- Loop through each message in the messages object -->
+        <div class="alert {{ message.tags }}" role="alert">
+            <!-- Display the message with appropriate Bootstrap alert class -->
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endif %}

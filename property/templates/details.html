@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block page %}
+{{ property.housing }}
+{% endblock %}
+
+{% block title_page %}
+{{ property.housing }}
+{% endblock %}
+
+{% block content %}
+
+<main class="container py-5">
+  <div class="row">
+    <div class="col-md-6">
+      <img src="{{ property.image.url }}" class="img-fluid" alt="Property Image">
+    </div>
+
+    <div class="col-md-6">
+      <h2>Property Details</h2>
+      <p>{{ property.description }}</p>
+
+      <ul class="list-group">
+        <li class="list-group-item"><strong>Proprietor:</strong> {{ property.client }}</li>
+        <li class="list-group-item"><strong>Property Type:</strong> {{ property.housing }}</li>
+        <li class="list-group-item"><strong>Price:</strong> $ {{ property.price }}</li>
+        <li class="list-group-item"><strong>Bedrooms:</strong> {{ property.bad }}</li>
+        <li class="list-group-item"><strong>Bathrooms:</strong> {{ property.bath }}</li>
+        <li class="list-group-item"><strong>Area:</strong> {{ property.sqft }}</li>
+        <li class="list-group-item"><strong>Location:</strong> {{ property.street_number }} street, {{ property.city }}, {{ property.country }}</li>
+      </ul>
+
+      <br>
+      {% if property.client == request.user %} 
+      <form method="POST" action="{% url 'delete_property' property.id %}">
+          {% csrf_token %}
+          <button type="submit" class="btn btn-danger">Delete Property</button>
+      </form>
+      {% else %}
+        <a href="{% url 'contact' %}" class="btn btn-primary mt-3">Start Negotiation</a>
+      {% endif %}
+    </div>
+  </div>
+</main>
+
+{% endblock %}

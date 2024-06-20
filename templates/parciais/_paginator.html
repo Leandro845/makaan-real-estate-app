@@ -1,0 +1,21 @@
+<div class="pagination" id="pagination">
+  {% if obj_list.has_previous %}
+      <!-- Link to previous page if available -->
+      <a href="?page={{ obj_list.previous_page_number }}" class="page-link prev">« Previous</a>
+  {% endif %}
+
+  {% for num in obj_list.paginator.page_range %}
+      {% if num == obj_list.number %}
+          <!-- Current page number with active styling -->
+          <a href="?page={{ num }}" class="page-link active">{{ num }}</a>
+      {% elif num > obj_list.number|add:-3 and num < obj_list.number|add:3 %}
+          <!-- Display page numbers within a range around the current page -->
+          <a href="?page={{ num }}" class="page-link">{{ num }}</a>
+      {% endif %}
+  {% endfor %}
+
+  {% if obj_list.has_next %}
+      <!-- Link to next page if available -->
+      <a href="?page={{ obj_list.next_page_number }}" class="page-link next">Next »</a>
+  {% endif %}
+</div>

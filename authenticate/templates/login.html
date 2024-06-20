@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block page %}
+Login
+{% endblock %}
+
+{% block title_page %}
+Login
+{% endblock %}
+
+{% block content %}
+
+<br>
+<div class="container mt-5">
+    <h1 class="text-center">Login Form</h1>
+    <br><br>
+
+    <!-- Include messages template for displaying form validation messages -->
+    {% include 'parciais/_message.html' %}
+    
+    <!-- Login form -->
+    <form action="{% url 'login' %}" method="POST" class="row justify-content-center">
+        {% csrf_token %}
+
+        <!-- Left column: Username and Password -->
+        <div class="col-md-6">
+            <label for="username_login" class="form-label">Username:</label>
+            <input type="text" class="form-control" id="username_login" name="username_login" required>
+
+            <label for="password_login" class="form-label">Password:</label>
+            <input type="password" class="form-control" id="password_login" name="password_login" required>
+
+            <!-- Link to registration page -->
+            <a href="{% url 'registration' %}" class="text-success">Don't have an account? Register here.</a>
+        </div>
+
+        <!-- Submit button -->
+        <div class="col-12 mt-3 text-center">
+            <button type="submit" class="btn btn-primary">Login</button>
+        </div>
+    </form>
+</div>
+
+{% endblock %}
